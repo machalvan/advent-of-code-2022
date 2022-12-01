@@ -28,18 +28,10 @@ Array.prototype.toNumbers = function () {
 };
 
 // String
-String.prototype.parseLines = function () {
+String.prototype.toLines = function () {
   return this.split("\n");
 };
 
-String.prototype.parseNumberLines = function () {
-  return this.split("\n").toNumbers();
-};
-
-String.prototype.parseBlocks = function () {
-  return this.split("\n\n").map(block => block.parseLines());
-};
-
-String.prototype.parseNumberBlocks = function () {
-  return this.split("\n\n").map(block => block.parseNumberLines());
+String.prototype.toBlocks = function () {
+  return this.split("\n\n").map(block => block.toLines());
 };
