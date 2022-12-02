@@ -1,4 +1,5 @@
 // Array
+
 Array.prototype.min = function () {
   return Math.min(...this);
 };
@@ -9,6 +10,10 @@ Array.prototype.max = function () {
 
 Array.prototype.sum = function () {
   return this.reduce((a, b) => a + b, 0);
+};
+
+Array.prototype.prod = function () {
+  return this.reduce((a, b) => a * b, 0);
 };
 
 Array.prototype.sortAsc = function () {
@@ -28,6 +33,7 @@ Array.prototype.toNumbers = function () {
 };
 
 // String
+
 String.prototype.toLines = function () {
   return this.split("\n");
 };
