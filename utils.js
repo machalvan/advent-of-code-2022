@@ -36,6 +36,18 @@ Array.prototype.intersection = function () {
   return this.filter(str => arguments[0].includes(str))
 }
 
+Array.prototype.difference = function () {
+  return this.filter(str => !arguments[0].includes(str))
+}
+
+Array.prototype.isSubsetOf = function (arr) {
+  return this.every(str => arr.includes(str))
+}
+
+Array.prototype.isSupersetOf = function (arr) {
+  return arr.every(str => this.includes(str))
+}
+
 // String
 
 String.prototype.toList = function () {
