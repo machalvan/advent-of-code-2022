@@ -1,3 +1,17 @@
+// Functions
+
+module.exports = function () {
+  this.range = (start, end, step = 1) => {
+    return start <= end
+      ? [...Array(Math.floor((end - start) / step) + 1).keys()].map(
+          num => num * step + start
+        )
+      : [...Array(Math.floor((start - end) / step) + 1).keys()].map(
+          num => -num * step + start
+        )
+  }
+}
+
 // Array
 
 Array.prototype.min = function () {
