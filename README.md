@@ -8,7 +8,7 @@ Solutions written in JavaScript.
 
 ### index.js
 
-This is the code that was used to first solve the problem. It has been minimally cleaned up before being committed.
+This is the code that was first used to solve the problem. Some clean-up has been made before committing.
 
 ### improved.js
 
