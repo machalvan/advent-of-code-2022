@@ -10,6 +10,12 @@ module.exports = function () {
           num => -num * step + start
         )
   }
+
+  this.loop = (times, callback) => {
+    for (let i = 0; i < times; i++) {
+      callback(i)
+    }
+  }
 }
 
 // Array
@@ -62,6 +68,10 @@ Array.prototype.isSupersetOf = function (arr) {
   return arr.every(str => this.includes(str))
 }
 
+Array.prototype.transpose = function () {
+  return this[0].map((_, colIndex) => this.map(row => row[colIndex]))
+}
+
 // String
 
 String.prototype.toList = function () {
@@ -79,4 +89,8 @@ String.prototype.toBlocks = function () {
 String.prototype.isUpperCase = function () {
   "use strict"
   return this === this.toUpperCase()
+}
+
+String.prototype.getDigits = function () {
+  return this.match(/\d+/g).toNumbers()
 }
