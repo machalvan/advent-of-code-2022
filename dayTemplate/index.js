@@ -1,5 +1,5 @@
 const { readFileSync } = require("fs")
-require("../utils")
+require("../utils")()
 
 const part1 = input => {
   return
@@ -9,6 +9,6 @@ const part2 = input => {
   return
 }
 
-const input = readFileSync("input.txt", "utf8").trim()
+const input = readFileSync("input.txt", "utf8").trimEnd()
 console.log(part1(input))
 console.log(part2(input))
