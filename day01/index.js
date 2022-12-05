@@ -1,12 +1,11 @@
-const { readFileSync } = require("fs");
-require("../utils");
+require("../utils")()
 
 const part1 = input => {
   return input
     .toBlocks()
     .map(block => block.toNumbers().sum())
-    .max();
-};
+    .max()
+}
 
 const part2 = input => {
   return input
@@ -14,9 +13,7 @@ const part2 = input => {
     .map(block => block.toNumbers().sum())
     .sortDesc()
     .slice(0, 3)
-    .sum();
-};
+    .sum()
+}
 
-const input = readFileSync("input.txt", "utf8").trim();
-console.log(part1(input));
-console.log(part2(input));
+module.exports = { part1, part2 }

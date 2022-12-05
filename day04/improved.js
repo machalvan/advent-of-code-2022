@@ -1,4 +1,3 @@
-const { readFileSync } = require("fs")
 require("../utils")()
 
 const part1 = input => {
@@ -21,6 +20,4 @@ const part2 = input => {
     }, 0)
 }
 
-const input = readFileSync("input.txt", "utf8").trim()
-console.log(part1(input))
-console.log(part2(input))
+module.exports = { part1, part2 }
