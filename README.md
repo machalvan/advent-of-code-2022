@@ -4,6 +4,12 @@ https://adventofcode.com/2022
 
 Solutions written in JavaScript.
 
+## Usage
+
+```bash
+node index.js <day>
+```
+
 ## Solutions
 
 ### index.js
