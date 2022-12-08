@@ -33,7 +33,7 @@ Array.prototype.sum = function () {
 }
 
 Array.prototype.prod = function () {
-  return this.reduce((a, b) => a * b, 0)
+  return this.reduce((a, b) => a * b, 1)
 }
 
 Array.prototype.sortAsc = function () {
