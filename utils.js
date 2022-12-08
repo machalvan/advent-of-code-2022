@@ -86,6 +86,10 @@ String.prototype.toBlocks = function () {
   return this.split("\n\n").map(block => block.toLines())
 }
 
+String.prototype.toGrid = function () {
+  return this.toLines().map(line => line.split(""))
+}
+
 String.prototype.isUpperCase = function () {
   "use strict"
   return this === this.toUpperCase()
