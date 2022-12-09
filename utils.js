@@ -16,6 +16,12 @@ module.exports = function () {
       callback(i)
     }
   }
+
+  this.createGrid = (width, height, cell = 0) => {
+    return Array(height)
+      .fill()
+      .map(() => Array(width).fill(cell))
+  }
 }
 
 // Array
