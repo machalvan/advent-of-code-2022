@@ -1,10 +1,10 @@
 require("../utils")()
 
-const isNeighbour = (x1, y1, x2, y2) =>
+const areNeighbours = (x1, y1, x2, y2) =>
   Math.abs(x2 - x1) <= 1 && Math.abs(y2 - y1) <= 1
 
 const getNewPos = ([x, y], [headX, headY]) => {
-  if (isNeighbour(x, y, headX, headY)) return [x, y]
+  if (areNeighbours(x, y, headX, headY)) return [x, y]
 
   const deltaX = headX - x > 0 ? 1 : headX - x < 0 ? -1 : 0
   const deltaY = headY - y > 0 ? 1 : headY - y < 0 ? -1 : 0
@@ -13,10 +13,9 @@ const getNewPos = ([x, y], [headX, headY]) => {
 }
 
 const part1 = input => {
-  const side = 1000
-  const grid = createGrid(side, side)
-  let x = side / 2
-  let y = side / 2
+  const grid = new Set()
+  let x = 0
+  let y = 0
   const knotsCount = 2
   const rope = Array(knotsCount).fill([x, y])
   const xMap = { U: 0, R: 1, D: 0, L: -1 }
@@ -26,7 +25,7 @@ const part1 = input => {
     .toLines()
     .map(line => line.split(" "))
     .forEach(([dir, steps]) => {
-      loop(steps, () => {
+      loop(parseInt(steps), () => {
         x += xMap[dir]
         y += yMap[dir]
 
@@ -34,19 +33,17 @@ const part1 = input => {
           rope[i] = i === 0 ? [x, y] : getNewPos(rope[i], rope[i - 1])
         })
 
-        const [tailX, tailY] = rope.at(-1)
-        grid[tailY][tailX] = 1
+        grid.add(JSON.stringify(rope.at(-1)))
       })
     })
 
-  return grid.map(row => row.sum()).sum()
+  return grid.size
 }
 
 const part2 = input => {
-  const side = 1000
-  const grid = createGrid(side, side)
-  let x = side / 2
-  let y = side / 2
+  const grid = new Set()
+  let x = 0
+  let y = 0
   const knotsCount = 10
   const rope = Array(knotsCount).fill([x, y])
   const xMap = { U: 0, R: 1, D: 0, L: -1 }
@@ -56,7 +53,7 @@ const part2 = input => {
     .toLines()
     .map(line => line.split(" "))
     .forEach(([dir, steps]) => {
-      loop(steps, () => {
+      loop(parseInt(steps), () => {
         x += xMap[dir]
         y += yMap[dir]
 
@@ -64,12 +61,11 @@ const part2 = input => {
           rope[i] = i === 0 ? [x, y] : getNewPos(rope[i], rope[i - 1])
         })
 
-        const [tailX, tailY] = rope.at(-1)
-        grid[tailY][tailX] = 1
+        grid.add(JSON.stringify(rope.at(-1)))
       })
     })
 
-  return grid.map(row => row.sum()).sum()
+  return grid.size
 }
 
 module.exports = { part1, part2 }
