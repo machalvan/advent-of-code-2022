@@ -104,3 +104,34 @@ String.prototype.isUpperCase = function () {
 String.prototype.getDigits = function () {
   return this.match(/\d+/g).toNumbers()
 }
+
+// Object
+
+Object.prototype.getShortestDistance = function (start, end) {
+  // Dijkstra's algorithm
+
+  const distances = {}
+  for (const vertex in this) {
+    distances[vertex] = Infinity
+  }
+
+  distances[start] = 0
+
+  const pq = [[0, start]]
+  while (pq.length > 0) {
+    const [distance, vertex] = pq.pop()
+
+    if (distance > distances[vertex]) continue
+
+    for (const [neighbor, weight] of Object.entries(this[vertex])) {
+      const newDistance = distance + weight
+
+      if (newDistance < distances[neighbor]) {
+        distances[neighbor] = newDistance
+        pq.push([newDistance, neighbor])
+      }
+    }
+  }
+
+  return distances[end]
+}
