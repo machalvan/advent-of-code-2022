@@ -22,6 +22,10 @@ module.exports = function () {
       .fill()
       .map(() => Array(width).fill(cell))
   }
+
+  this.manhattan = (x1, y1, x2, y2) => {
+    return Math.abs(x1 - x2) + Math.abs(y1 - y2)
+  }
 }
 
 // Array
@@ -102,7 +106,7 @@ String.prototype.isUpperCase = function () {
 }
 
 String.prototype.getDigits = function () {
-  return this.match(/\d+/g).toNumbers()
+  return this.match(/-?\d+/g).toNumbers()
 }
 
 // Object
